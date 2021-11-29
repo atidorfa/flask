@@ -1,15 +1,27 @@
 <script>
 	let rand = -1;
+	let pokemon;
+	
 	function getRand() {
 	  fetch("./rand")
 		.then(d => d.text())
 		.then(d => (rand = d));
 	}
+
+	function getPokemon() {
+	  fetch("./pokemon/pikachu")
+		.then(poke => poke.text())
+		.then(poke => (pokemon = poke));
+	}
+
 </script>
 
 <main>
 <h1>Your number is {rand}!</h1>
 <button on:click={getRand}>Get a random number</button>
+
+<button on:click={getPokemon}>Get pokemon</button>
+<p>{pokemon}</p>
 </main>
 
 <style>
